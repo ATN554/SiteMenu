@@ -1,0 +1,12 @@
+:root {
+  --border-color: #817474;
+  --panel-bg-color: #d1e9d3;
+  --button-bg-color-active: #90e090;
+  --button-bg-color-inactive: #b9b9b9;
+  --shadow-bg-color: #000000a0;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
