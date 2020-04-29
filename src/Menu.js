@@ -45,7 +45,7 @@ export default class Menu extends React.Component {
     this.state={
       showPanel: false,
       panelId: "id1",
-      contentId: "id2",
+      frameId: undefined,
     }
 
     this.setShowPanel = this.setShowPanel.bind(this);
@@ -54,10 +54,8 @@ export default class Menu extends React.Component {
   setShowPanel(show) {
     if (show) {
       document.getElementById(this.state.panelId).classList.add("active");
-      document.getElementById(this.state.contentId).classList.add("active");
     } else {
       document.getElementById(this.state.panelId).classList.remove("active");
-      document.getElementById(this.state.contentId).classList.remove("active");
     }
     this.setState({ showPanel: show });
   }
@@ -86,38 +84,55 @@ export default class Menu extends React.Component {
         </div>
 
         <div className="close-button">
-          <IconButton
-            variant="contained"
-            onClick={() => alert("Закрыть фрейм")}
-          >
-            <CloseIcon />
-          </IconButton>
+          {
+            this.state.frameId
+              ?
+            <IconButton
+              variant="contained"
+              onClick={() => alert("Закрыть фрейм")}
+            >
+              <CloseIcon />
+            </IconButton>
+              :
+            <Skeleton variant="circle" width={48} height={48} />
+          }
         </div>
 
         <div id={this.state.panelId} className="panel-left">
-          <div id={this.state.contentId} className="panel-left-content">
-            <div>Меню</div>
-          </div>
+          <div>Меню</div>
         </div>
 
-        <Card>
-          <CardHeader
-            title="Фрейм приложения"
-            titleTypographyProps={{ variant: "body2" }}
-            subheader="29 апреля 2020 г. 10:03:50"
-            subheaderTypographyProps={{ variant: "caption" }}
-          />
-          <CardContent>
-            <iframe
+        {
+          this.state.frameId
+            ?
+          <Card>
+            <CardHeader
               title="Фрейм приложения"
-              src="https://material.io/resources/icons/?style=baseline"
-              width="100%"
-              height="100%"
-              loading="lazy"
-              frameBorder="0"
+              titleTypographyProps={{ variant: "body2" }}
+              subheader="29 апреля 2020 г. 10:03:50"
+              subheaderTypographyProps={{ variant: "caption" }}
             />
-          </CardContent>
-        </Card>
+            <CardContent>
+              <iframe
+                title="Фрейм приложения"
+                src="https://material.io/resources/icons/?style=baseline"
+                width="100%"
+                height="100%"
+                loading="lazy"
+                frameBorder="0"
+              />
+            </CardContent>
+          </Card>
+            :
+          <Card>
+            <CardHeader
+              title={<Skeleton variant="rect" height={40} />}
+            />
+            <CardContent>
+              <Skeleton variant="rect" height="100%" />
+            </CardContent>
+          </Card>
+        }
       </ThemeProvider>
     );
   }

@@ -1,7 +1,8 @@
 :root {
   --root-bg-color: #d1e9d3;
 
-  --border-color: #817474;
+  --border-color2: #817474;
+  --border-color: #000000;
   --panel-bg-color: #d1e9d3;
   --button-bg-color-active: #90e090;
   --button-bg-color-inactive: #b9b9b9;
@@ -15,47 +16,35 @@
 
 .panel-left {
   position: absolute;
-  top: 0;
-  bottom: 0;
   left: 0;
+  opacity: 0;
+  top: 50%;
+  bottom: 50%;
   width: 0;
+  border-right: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 15px 5px 15px -5px var(--shadow-bg-color);
+  background: var(--panel-bg-color);
+  overflow: hidden;
   transition:
-    width .2s ease-in-out .4s;
+    opacity .6s ease-in-out .3s,
+    width .4s ease-in-out .5s,
+    top .4s ease-in-out .1s,
+    bottom .4s ease-in-out .1s;
   z-index: 3;
 }
 
 .panel-left.active {
-  width: 200px;
-  transition:
-    width .2s ease-in-out .1s;
-}
-
-.panel-left-content {
-  position: absolute;
-  opacity: 0;
-  top: 50%;
-  width: calc(100% - 1px);
-  height: 0;
-  border-right: 1px solid var(--border-color);
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  background: var(--panel-bg-color);
-  box-shadow: 15px 5px 15px -5px var(--shadow-bg-color);
-  overflow: hidden;
-  transition:
-    opacity .3s ease-in-out .3s,
-    height .3s ease-in-out .1s,
-    top .3s ease-in-out .1s;
-}
-
-.panel-left-content.active {
-  top: 0;
-  height: calc(100% - 2px);
   opacity: 1;
+  top: 0;
+  bottom: 0;
+  width: 250px;
   transition:
-    opacity .3s ease-in-out .0s,
-    height .3s ease-in-out .3s,
-    top .3s ease-in-out .3s;
+    opacity .6s ease-in-out .0s,
+    width .4s ease-in-out .1s,
+    top .4s ease-in-out .5s,
+    bottom .4s ease-in-out .5s;
 }
 
 .menu-button {
