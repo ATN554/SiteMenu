@@ -12,3 +12,62 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.panel-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  transition:
+    width .2s ease-in-out .4s;
+  z-index: 3;
+}
+
+.panel-left.active {
+  width: 200px;
+  transition:
+    width .2s ease-in-out .1s;
+}
+
+.panel-left-content {
+  position: absolute;
+  opacity: 0;
+  top: 50%;
+  width: calc(100% - 1px);
+  height: 0;
+  border-right: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  background: var(--panel-bg-color);
+  box-shadow: 15px 5px 15px -5px var(--shadow-bg-color);
+  overflow: hidden;
+  transition:
+    opacity .3s ease-in-out .3s,
+    height .3s ease-in-out .1s,
+    top .3s ease-in-out .1s;
+}
+
+.panel-left-content.active {
+  top: 0;
+  height: calc(100% - 2px);
+  opacity: 1;
+  transition:
+    opacity .3s ease-in-out .0s,
+    height .3s ease-in-out .3s,
+    top .3s ease-in-out .3s;
+}
+
+.menu-button {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+
+.close-button {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  z-index: 1;
+}
