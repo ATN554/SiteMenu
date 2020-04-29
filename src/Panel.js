@@ -1,18 +1,7 @@
 import React from "react";
+import { ThemeProvider } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-
-const buttonTheme = createMuiTheme({
-  overrides: {
-    MuiButton: {
-      root: {
-        minWidth: "30px",
-        padding: "3px"
-      }
-    }
-  }
-});
 
 export default class Panel extends React.Component {
   constructor(props) {
@@ -107,15 +96,13 @@ export default class Panel extends React.Component {
           id={this.state.buttonId}
           className={this.state.buttonClass}
         >
-          <ThemeProvider theme={buttonTheme}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.toggle}
-            >
-              <MenuIcon />
-            </Button>
-          </ThemeProvider>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={this.toggle}
+          >
+            <MenuIcon />
+          </Button>
         </div>
       </div>
     );
